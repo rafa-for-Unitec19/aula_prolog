@@ -1,4 +1,5 @@
 %Base de Datos, Proyecto Prolog
+:- use_module(library(lists)).
 %Aulas
 aula(wwe65, 45, 0).
 aula(pwk06, 50, 3).
@@ -67,3 +68,34 @@ aula(efk22, 30, 6).
 aula(ovm92, 35, 2).
 aula(wia17, 10, 1).
 aula(lkv19, 10, 1).
+estudiante(2000100001, 1, [math101, phys201, ec201]) .
+estudiante(2000100002, 1, [math101, phys201, hist301]).
+estudiante(2000100003, 1, [math101, ec201, hist301]) .
+estudiante(2000100004, 1, [math101, phys201, ec201, hist301]) .
+estudiante(2000100007, 0, [ec201, phys201]).
+estudiante(2000100015, 0, [ec201, hist301]) .
+estudiante(2000100016, 0, [cmpe150, hist301]).
+estudiante(2000100017, 0, []).
+estudiante(2000100008, 0, [math101, phys201]) .
+estudiante(2000100009, 1, [phys201, ec201]).
+estudiante(2000100010, 0, [cmpe150, math101]).
+estudiante(2000100011, 0, [cmpe150, hist301]).
+estudiante(2000100012, 1, [math101, phys201]).
+estudiante(2002100009, 0, [math101, ec201, hist301]).
+estudiante(2002100071, 0, [phys201, ec201, hist301]).
+estudiante(2002100053, 0, [cmpe150, ec201]).
+estudiante(2002100040, 1, [math101, hist301]).
+estudiante(2002100032, 0, [phys201, ec201]).
+estudiante(2002100010, 0, [cmpe150]).
+estudiante(2002103010, 1, []).
+
+existe(X, [X|T1]).
+existe(X,[H1|T1]):- 
+    existe(X,T1).
+
+estudiaMateria(X,Y):-
+    estudiante(Y,_,Z),
+    existe(X,Z).
+
+lista_estudiantes(IdCurso,Resultado):- 
+    findall(Estudiante, estudiaMateria(IdCurso,Estudiante), Resultado).
