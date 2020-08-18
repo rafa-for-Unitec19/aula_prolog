@@ -68,6 +68,7 @@ aula(ovm92, 35, 2).
 aula(wia17, 10, 1).
 aula(lkv19, 10, 1).
 
+%Estudiantes
 estudiante(3001, 1, [fis201, tll314]).
 estudiante(3002, 1, [eie1]).
 estudiante(3003, 1, [esp103]).
@@ -193,6 +194,7 @@ estudiante(3122, 0, [lcc104, adm102, tll314, mat101]).
 estudiante(3123, 1, [his101, eie1]).
 estudiante(3124, 0, [adm102, sel406, fis201, esp103]).
 
+%Fecha de Examenes
 fechaexam(mat101, ['05.03.2020', '24.04.2020', '13.06.2020', '02.08.2020']).
 fechaexam(esp103, ['06.03.2020', '25.04.2020', '14.06.2020', '03.08.2020']).
 fechaexam(his101, ['07.03.2020', '26.04.2020', '15.06.2020', '04.08.2020']).
