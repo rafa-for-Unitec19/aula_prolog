@@ -227,3 +227,26 @@ buscar(X,[W|Z]):- equal(X,W);
     buscar(X,Z).
 lista_clases(ID, X):- estudiante(ID,_,X).        
 lista_fechas(ID,F):- findall(X,(lista_clases(ID,CLS),buscar(CL,CLS),fechaexam(CL,X)),F).
+
+% Funciones para el problema #3
+
+%Funcion principal de aulas adecuadas
+aulas_adecuadas(X,S):- lista_estudiantes(X,E),tamanio(E,D),D>0,estudiantes_zurdos(E,A),tamanio(E,B),lista_aulas(C),busqueda(C,B,A,Z),S = Z.
+aulas_adecuadas(X,S):- lista_estudiantes(X,E),tamanio(E,D),D=:=0,S=[].
+
+%Se obtienen los estudiantes zurdos           
+estudiantes_zurdos([X|Y],Z):- estudiante(X,1,_), estudiantes_zurdos(Y,Z1), Z is Z1+1.
+estudiantes_zurdos([X|Y],Z):- estudiante(X,0,_), estudiantes_zurdos(Y,Z1), Z is Z1.
+estudiantes_zurdos([],Z):- Z is 0.
+%Se obtienen los tamanios de loa arreglos que luego se comparan
+tamanio([],0).
+tamanio([_|Y],S):-tamanio(Y,L),S is L+1.
+%Se buscan las aulas
+busca_aulas(B,A,Z):-lista_aulas(C),busqueda(C,B,A,Y),Z is Y.
+lista_aulas(X):- findall(Aula, aula(Aula,_,_), X).
+
+%Se hace una busqueda mas especifica utilizando la cantidad de estudiantes y estudiantes zurdos para obtener las aulas adecuadas.
+busqueda([],_,_,[]).
+busqueda([C|F],B,A,Z):-aula(C,D,E),B =< D, A=<E, busqueda(F,B,A,Z1), Z=[C|Z1].
+busqueda([C|F],B,A,Z):-aula(C,_,E),A > E, busqueda(F,B,A,Z1), Z=Z1.
+busqueda([C|F],B,A,Z):-aula(C,D,_),B > D, busqueda(F,B,A,Z1), Z=Z1.
