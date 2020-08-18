@@ -67,3 +67,35 @@ aula(efk22, 30, 6).
 aula(ovm92, 35, 2).
 aula(wia17, 10, 1).
 aula(lkv19, 10, 1).
+
+estudiante(2000100001, 1, [math101, phys201, ec201]) .
+estudiante(2000100002, 1, [math101, phys201, hist301]).
+estudiante(2000100003, 1, [math101, ec201, hist301]) .
+estudiante(2000100004, 1, [math101, phys201, ec201, hist301]) .
+estudiante(2000100007, 0, [ec201, phys201]).
+estudiante(2000100015, 0, [ec201, hist301]) .
+estudiante(2000100016, 0, [cmpe150, hist301]).
+estudiante(2000100017, 0, []).
+estudiante(2000100008, 0, [math101, phys201]) .
+estudiante(2000100009, 1, [phys201, ec201]).
+estudiante(2000100010, 0, [cmpe150, math101]).
+estudiante(2000100011, 0, [cmpe150, hist301]).
+estudiante(2000100012, 1, [math101, phys201]).
+estudiante(2002100009, 0, [math101, ec201, hist301]).
+estudiante(2002100071, 0, [phys201, ec201, hist301]).
+estudiante(2002100053, 0, [cmpe150, ec201]).
+estudiante(2002100040, 1, [math101, hist301]).
+estudiante(2002100032, 0, [phys201, ec201]).
+estudiante(2002100010, 0, [cmpe150]).
+estudiante(2002103010, 1, []).
+fechaexam(cmpe150, ['15.04.2018', '25.05.2018', '04.06.2018']).
+fechaexam(math101, ['17.04.2018', '15.05.2018', '04.06.2018']).
+fechaexam(phys201, ['15.04.2018', '19.05.2018', '05.06.2018']).
+fechaexam(ec201, ['16.04.2018', '20.05.2018', '02.06.2018']).
+fechaexam(hist301, ['14.04.2018', '21.05.2018', '01.06.2018']).
+
+equal(X,X).
+buscar(X,[W|Z]):- equal(X,W);
+    buscar(X,Z).           
+lista_clases(ID, X):- estudiante(ID,_,X).        
+lista_fechas(ID,F):- findall(X,(lista_clases(ID,CLS),buscar(CL,CLS),fechaexam(CL,X)),F).
