@@ -220,6 +220,7 @@ estudiaMateria(X,Y):-
 lista_estudiantes(IdCurso,Resultado):- 
     findall(Estudiante, estudiaMateria(IdCurso,Estudiante), Resultado).
 
+
 % Funciones para el problema #2
 equal(X,X).
 buscar(X,[W|Z]):- equal(X,W);
