@@ -2,7 +2,7 @@
 Primer Proyecto, Lenguajes de programación,  Q3 2020
 
 ## Integrantes
-- Andres Cruz 
+- Andrés Elías Cruz Banegas - 11811228
 - Daniel
-- Mayra Salazar
-- Rafael Flores
+- Mayra Alejandra Salazar Rodriguez - 11511306
+- Rafael Eduardo Flores Cáceres - 31711187
