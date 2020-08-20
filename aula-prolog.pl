@@ -209,8 +209,8 @@ fechaexam(tll314, ['15.03.2020', '04.05.2020', '23.06.2020', '12.08.2020']).
 fechaexam(tel201, ['16.03.2020', '05.05.2020', '24.06.2020', '13.08.2020']).
 
 % Funciones para el problema #1
-existe(X, [X|T1]).
-existe(X,[H1|T1]):- 
+existe(X, [X|_]).
+existe(X,[_|T1]):- 
     existe(X,T1).
 
 estudiaMateria(X,Y):-
@@ -226,7 +226,7 @@ equal(X,X).
 buscar(X,[W|Z]):- equal(X,W);
     buscar(X,Z).
 lista_clases(ID, X):- estudiante(ID,_,X).        
-lista_fechas(ID,F):- findall(X,(lista_clases(ID,CLS),buscar(CL,CLS),fechaexam(CL,X)),F).
+lista_fechas(ID,F):- findall(X,(lista_clases(ID,CLS),buscar(CL,CLS),fechaexam(CL,X)),G),append(G,F).
 
 % Funciones para el problema #3
 
