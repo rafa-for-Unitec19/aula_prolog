@@ -231,7 +231,7 @@ lista_fechas(ID,F):- findall(X,(lista_clases(ID,CLS),buscar(CL,CLS),fechaexam(CL
 % Funciones para el problema #3
 
 %Funcion principal de aulas adecuadas
-aulas_adecuadas(X,S):- lista_estudiantes(X,E),tamanio(E,D),D>0,estudiantes_zurdos(E,A),tamanio(E,B),lista_aulas(C),busqueda(C,B,A,Z),S = Z.
+aulas_adecuadas(X,S):- lista_estudiantes(X,E),tamanio(E,D),D>0,estudiantes_zurdos(E,A),tamanio(E,B),lista_aulas(C),busqueda(C,B,A,Z),!,S = Z.
 aulas_adecuadas(X,S):- lista_estudiantes(X,E),tamanio(E,D),D=:=0,S=[].
 
 %Se obtienen los estudiantes zurdos           
